@@ -1,0 +1,10 @@
+
+ a.active::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background: linear-gradient(to right, #632EE3, #9F62F2) ;
+  }
