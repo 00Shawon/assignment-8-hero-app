@@ -1,5 +1,5 @@
 # React + Vite
-This app name is assaignment-8 because it is made for PH<s assignment. It is Basically a appStore where you can find your fabourite app. This app is an example of practical react routing.  
+This app name is app store and it is made for PH's assignment. It is Basically a appStore where you can find your fabourite app. This app is an example of practical react routing.  
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.Also usded some of the react libraries such as Lucid React, Toastify ,axiox , react router.
 This app combined tailwind CSS with react to design the app in minimal effort. 
 
