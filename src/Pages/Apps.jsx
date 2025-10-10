@@ -3,16 +3,19 @@ import App from "../Component/App";
 import useApps from "../Hook/useApps";
 
 import NotFound from "../Component/NotFound";
+import LoadingSpinner from "../Component/LoadingSpinner";
 
 
 const Apps = () => {
-  const { apps, loading, } = useApps();
-  const [search , setSearch] = useState('');
-  const term  = search.trim().toLocaleLowerCase();
-  const searchedApps = term? apps.filter(app => app.title.toLocaleLowerCase().includes(term)) : apps;
-  if (searchedApps.length === 0) return <NotFound></NotFound>
-            
-         
+  const { apps, loading } = useApps();
+  const [search, setSearch] = useState("");
+  const term = search.trim().toLocaleLowerCase();
+  const searchedApps = term
+    ? apps.filter((app) => app.title.toLocaleLowerCase().includes(term))
+    : apps;
+    if(loading) return <LoadingSpinner></LoadingSpinner>
+  if (searchedApps.length === 0) return <NotFound></NotFound>;
+
   return (
     <div>
       <div>
@@ -44,14 +47,22 @@ const Apps = () => {
                 <path d="m21 21-4.3-4.3"></path>
               </g>
             </svg>
-            <input value={search} onChange={(e)=> setSearch(e.target.value)} type="search" className="grow" placeholder="Search Apps" />
+            <input
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              type="search"
+              className="grow"
+              placeholder="Search Apps"
+            />
           </label>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
-          {searchedApps.map((app) => (
-            <App key={app.id} app={app}></App>
-          ))}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap10">
+          {loading ? (
+            <span className="loading loading-bars loading-xl"></span>
+          ) : (
+            searchedApps.map((app) => <App key={app.id} app={app}></App>)
+          )}
         </div>
       </div>
     </div>

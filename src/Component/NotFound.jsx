@@ -1,12 +1,16 @@
 import React from 'react';
 import notFound from '../assets/notFound.png'
-import { Link } from 'lucide-react';
+import { useNavigate } from 'react-router';
+
+
+
 
 const NotFound = () => {
+  const navigate = useNavigate();
   return (
     <div className='flex flex-col justify-center items-center'>
       <img src={notFound} alt="" />
-      <a className='btn btn-primary' href="/apps">Go Back</a>
+      <button onClick={()=>navigate(-1)}className='btn btn-primary'>Go Back</button>
     </div>
   );
 };

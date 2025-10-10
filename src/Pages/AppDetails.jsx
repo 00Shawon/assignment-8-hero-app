@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router";
 import useApps from "../Hook/useApps";
 import iconD from "../assets/fi_9131795.png";
 import iconStar from "../assets/fi_1828884.png";
+import iconReview from "../assets/review.png";
 import {
   BarChart,
   Bar,
@@ -14,21 +15,31 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 import { saveInstallApp } from "../Utilities/LocalStorage";
+import { toast } from "react-toastify";
+import NotFound from "../Component/NotFound";
+import LoadingSpinner from "../Component/LoadingSpinner";
 
 
 
 const AppDetails = () => {
+   
   const { id } = useParams();
   const { apps, loading } = useApps();
-
-  if (loading) return <h1>Loading</h1>;
+ const [isInstalled, setIsInstalled] = useState(false) 
+  
+console.log(isInstalled)
+  if (loading) return <LoadingSpinner></LoadingSpinner>;
 
   const app = apps.find((a) => String(a.id) === id);
-  const data = app.ratings;
+  if(!app) return <NotFound></NotFound>;
 
- 
+  const handleInstall = () => {
+    setIsInstalled(true)
+    
+  }
 
-
+const data = app.ratings;
+const reversedData = [...data].reverse();
 
   return (
     <div>
@@ -53,18 +64,18 @@ const AppDetails = () => {
               <h2 className="font-bold text-4xl">{app.downloads}</h2>
             </div>
             <div className="text-center">
-              <img className="w-10 mx-auto" src={iconD} alt="" />
-              <p className="text-gray-400">Downloads</p>
+              <img className="w-10 mx-auto" src={iconStar} alt="" />
+              <p className="text-gray-400">Average Ratings</p>
               <h2 className="font-bold text-4xl">{app.ratingAvg}</h2>
             </div>
             <div className="text-center">
-              <img className="w-10 mx-auto" src={iconStar} alt="" />
-              <p className="text-gray-400">Downloads</p>
+              <img className="w-10 mx-auto" src={iconReview} alt="" />
+              <p className="text-gray-400">Total Reviews</p>
               <h2 className="font-bold text-4xl">{app.reviews}</h2>
             </div>
           </div>
-          <button onClick={() =>saveInstallApp(app)} className="btn my-6 bg-[#62cb80] text-white">
-            Install Now ({app.size} MB)
+          <button disabled={isInstalled} onClick={()=>{saveInstallApp(app); handleInstall()} } className="btn my-6 bg-[#62cb80] text-white">
+            {isInstalled? 'Installed' : `Install Now (${app.size} MB)`}
           </button>
         </div>
       </div>
@@ -74,7 +85,7 @@ const AppDetails = () => {
         <h1 className="font-bold text-2xl my-6">Ratings</h1>
         <div className="bg-base-100 border rounded-xl p-4 h-80">
 <ResponsiveContainer width="100%" height="80%">
-  <BarChart layout="vertical" data={data}>
+  <BarChart layout="vertical" data={reversedData}>
     <CartesianGrid strokeDasharray="3 3" />
     <XAxis type="number" />
     <YAxis dataKey="name" type="category" />

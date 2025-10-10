@@ -1,3 +1,5 @@
+import { toast } from "react-toastify";
+
 export const getInstallApp = () => {
   try{  
     const data = localStorage.getItem('installAppList')
@@ -14,7 +16,8 @@ export const saveInstallApp = (app) => {
    const isDuplicate = installAppList.some(a => a.id === app.id);
    if(isDuplicate) return alert('App is Already Installed')
     const upDatedInstalledAppList = [...installAppList, app];
-  localStorage.setItem('installAppList',JSON.stringify(upDatedInstalledAppList))
+  localStorage.setItem('installAppList',JSON.stringify(upDatedInstalledAppList));
+  toast.success('App have been installed!')
   } catch(err) {
     console.log(err);
     return[];

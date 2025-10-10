@@ -3,22 +3,25 @@ import useApps from "../Hook/useApps";
 import App from "../Component/App";
 import play from "../assets/playstore.png";
 import appStore from "../assets/appstore.png";
-import modile from "../assets/Device _ Iphone.png";
+import modile from "../assets/hero.png";
 import { Link, NavLink } from "react-router";
+import LoadingSpinner from "../Component/LoadingSpinner";
+
+
+
 
 const Home = () => {
   const { apps, loading } = useApps();
-  const featuredApps = apps.slice(0, 8);
+  const featuredApps = apps.slice(4, 12);
   return (
-    <div className="">
-      <div className="text-center space-y-6 ">
+    <div className="space-y-10">
+      <div className="text-center mt-20 space-y-10 ">
         <h1 className="text-4xl font-bold">
           We Build
           <br />
           <span className="bg-gradient-to-r from-[#632EE3] to-[#9F62F2] bg-clip-text text-transparent">
-            Productive
-          </span>
-          Apps
+            Productive 
+          </span> Apps
         </h1>
         <p className="text-gray-500 max-w-[50%] mx-auto">
           At HERO.IO, we craft innovative apps designed to make everyday life
@@ -27,7 +30,7 @@ const Home = () => {
         </p>
         <div>
           <Link
-            to="https://play.google.com/store/apps/details?id=com.example.app"
+            to="https://play.google.com/store/games?device=windows"
             className="btn mr-2"
             target="_blank"
             rel="noopener noreferrer"
@@ -37,7 +40,7 @@ const Home = () => {
           </Link>
 
           <a
-            href="https://apps.apple.com/app/id123456789"
+            href="https://www.apple.com/app-store/"
             className="btn"
             target="_blank"
             rel="noopener noreferrer"
@@ -47,9 +50,9 @@ const Home = () => {
           </a>
         </div>
 
-        <div className="md:relative md:top-[-220px]">
+        <div className="">
           <img
-            className=" md:relative mb-5 md:top-80 md:left-110 z-[-1]"
+            className=" mx-auto"
             src={modile}
             alt=""
           />
@@ -83,7 +86,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="text-center mb-10">
+      <div className="text-center my-15">
         <h1 className="text-4xl font-bold">Trending Apps</h1>
         <p className="text-gray-500 my-5">
           Explore All Trending Apps on the Market developed by us
@@ -91,7 +94,8 @@ const Home = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
-        {featuredApps.map((app) => (
+        { loading? <LoadingSpinner></LoadingSpinner> : 
+        featuredApps.map((app) => (
           <App key={app.id} app={app}></App>
         ))}
       </div>

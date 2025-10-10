@@ -1,27 +1,25 @@
 import axios from "axios";
-import { useEffect, useState } from "react"
-import { data } from "react-router";
+import { useEffect, useState } from "react";
 
 
 const useApps = () => {
-  const [apps , setApps] = useState([]);
-  const [loading , setLoading] = useState(true);
-  const [error , setError] = useState(null);
+  const [apps, setApps] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
- useEffect(() => {
-  axios('../appData.json')
-    .then(data=> {
-      setApps(data.data);
-    })
-    .catch(err => {
-      setError(err);
-    })
-    .finally(() => {
-      setLoading(false);
-    });
-}, []);
+  useEffect(() => {
+    axios("/appData.json")
+      .then((data) => {
+        setApps(data.data);
+      })
+      .catch((err) => {
+        setError(err);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
 
-
-  return {apps,loading,error}
-}
-export default useApps;       
+  return { apps, loading, error };
+};
+export default useApps;

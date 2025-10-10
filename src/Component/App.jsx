@@ -7,7 +7,7 @@ import { Link } from 'react-router';
 const App = ({app}) => {
   return (
    
-      <div className='p-5 rounded-xl shadow-sm bg-white'>
+      <Link to={`/app/${app.id}`} className='px-8 py-4 space-y-3 rounded-xl shadow-xl bg-white hover:scale-105 transition ease-in-out'>
       <img className='rounded-xl mx-auto' src={app.image} alt="" />
         <p>{app.title}</p>
      <div className='flex justify-between items-center'>
@@ -19,9 +19,9 @@ const App = ({app}) => {
     </div>
    
      </div> 
-     <Link to={`/app/${app.id}`} className='btn btn-outline'>View Details</Link>
+     {/* <Link to={`/app/${app.id}`} className='btn btn-outline w-full'>View Details</Link> */}
      
-    </div>
+    </Link>
   
     
   );

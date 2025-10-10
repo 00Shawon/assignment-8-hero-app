@@ -9,14 +9,14 @@ const InstalledApp = ({ installedApp, setInstalledAppList }) => {
   const handleUninstall = (id) => {
     deleteFromInstalledAppList(id);
     setInstalledAppList((prev) => prev.filter((p) => p.id !== id));
-    toast("App uninstalled");
+    toast.info("App uninstalled");
   };
 
   const { image, downloads, title, ratingAvg, size, id } = installedApp;
 
   return (
 <div>
-   <div className="flex items-center justify-between ">
+   <div className="flex items-center justify-between shadow hover:scale-105 transition ease-in-out">
       <div className="flex gap-6 p-5">
         <img className="h-20" src={image} alt="" />
         <div>
