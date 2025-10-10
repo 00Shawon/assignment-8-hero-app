@@ -1,6 +1,10 @@
 # React + Vite
 This app name is app store and it is made for PH's assignment. It is Basically a appStore where you can find your fabourite app. This app is an example of practical react routing.  
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.Also usded some of the react libraries such as Lucid React, Toastify ,axiox , react router.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.Also usded some of the react libraries such as 
+1. Lucid React,
+2. Toastify ,
+3. axiox ,
+4. react router.
 This app combined tailwind CSS with react to design the app in minimal effort. 
 
 Currently, two official plugins are available:
