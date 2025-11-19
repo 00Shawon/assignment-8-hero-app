@@ -15,7 +15,7 @@ This app was created as part of **Assignment 8**, focusing on React Router, API 
 
 ## 🌍 Live Demo
 
-🔗 **Live URL:** *Add your deployed link here*
+🔗 **Live URL:** https://hero-app-store-by-oi.netlify.app/
 🔗 **GitHub Repository:** [https://github.com/00Shawon/assignment-8-hero-app](https://github.com/00Shawon/assignment-8-hero-app)
 
 ---
@@ -191,7 +191,7 @@ Contributions are welcome!
 
 ## 👤 Author
 
-**Shawon Hasan**
+**Shawon**
 🔗 GitHub: [https://github.com/00Shawon](https://github.com/00Shawon)
 
 ---
